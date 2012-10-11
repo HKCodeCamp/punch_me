@@ -20,5 +20,5 @@ Interactive animation software
 * **Alvin Hon**
 * **Chris Yuen**
 * **Eddie Lau** [3dd13](https://github.com/3dd13/)
-* **Lincoln Lee**
+* **Lincoln Lee** [linc01n](https://github.com/linc01n/)
 
