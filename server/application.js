@@ -1,5 +1,7 @@
 (function()
 {
+  var VICTIM_HIT_SOUND = new Audio("sfx/two.wav");
+
   function Victim($selector)
   {
     this.$selector = $selector;
@@ -10,8 +12,9 @@
     punch: function()
     {
       var $face = this.$selector.find('.face');
-      $face.attr('src', 'two.jpg');
-      setTimeout(function() { $face.attr('src', 'one.jpg'); }, 200);
+      $face.attr('src', 'images/two.jpg');
+      VICTIM_HIT_SOUND.play();
+      setTimeout(function() { $face.attr('src', 'images/one.jpg'); }, 200);
     },
 
     restore: function()
@@ -19,12 +22,6 @@
       this.$selector.find('.face').attr('src', 'one.jpg');
     }
   };
-
-
-  function logTrace(x)
-  {
-    $('.trace').append(x + "<br />");
-  }
 
   $(function()
   {
@@ -45,7 +42,7 @@
           break;
 
         default:
-          logTrace("Unknown message: " + message);
+          console.log("Unknown message: " + message);
           break;
       }
     });

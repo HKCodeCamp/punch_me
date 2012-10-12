@@ -22,5 +22,5 @@ module PunchMeServer
 end
 
 EventMachine.run do
-  EventMachine.start_server('127.0.0.1', PORT, PunchMeServer)
+  EventMachine.start_server('0.0.0.0', PORT, PunchMeServer)
 end
