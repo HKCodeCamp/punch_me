@@ -45,7 +45,7 @@ If the brew install sensor-kinect fails,
 
     link the command line niReg so that the manual install can run:
 
-            ln -s /usr/local/bin/niReg /usr/bin/niReg
+            sudo ln -s /usr/local/bin/niReg /usr/bin/niReg
 
     The main reason for doing this is because the niReg is setup when you brew install openni, so the path that the install.sh (of sensor-kinect) expecting does not match.
 
