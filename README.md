@@ -37,9 +37,17 @@ If the brew install sensor-kinect fails,
 
         sudo ./install.sh
 
-3. link the niReg (because this module is not installed into path of Homebrew)
+3. link the niReg
 
-        ln -s 
+    you should see the following error when you manually compile and install sensor-kinect:
+
+        registering module 'libXnDeviceSensorV2KM.dylib' with OpenNI..../install.sh: line 111: /usr/bin/niReg: No such file or directory
+
+    link the command line niReg so that the manual install can run:
+
+            ln -s /usr/local/bin/niReg /usr/bin/niReg
+
+    The main reason for doing this is because the niReg is setup when you brew install openni, so the path that the install.sh (of sensor-kinect) expecting does not match.
 
 4. After installing everything, run the sample in:
 
