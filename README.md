@@ -49,7 +49,7 @@ If the brew install sensor-kinect fails,
 
     The main reason for doing this is because the niReg is setup when you brew install openni, so the path that the install.sh (of sensor-kinect) expecting does not match.
 
-4. After installing everything, run the sample in:
+After installing everything, run the sample in:
 
         /usr/local/Cellar/openni/unstable-1.5.4.0/sample/Bin/x64-Release
         ./Sample-NiSimpleViewer 
