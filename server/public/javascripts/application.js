@@ -1,3 +1,5 @@
+MESSAGES = ["Shit", "F Off", "No, I didn't do it", "You Lie !!"];
+
 (function()
 {
   var VICTIM_HIT_SOUND = new Audio("sfx/two.wav");
@@ -25,6 +27,7 @@
       window.paperExplodeAt(x, y, direction, force);
 
       VICTIM_HIT_SOUND.play();
+      this.swap_character_message();
       // setTimeout(function() { $face.attr('src', 'images/one.jpg'); }, 200);
     },
 
@@ -43,6 +46,10 @@
       clearTimeout(animationTimeout);
       target.trigger('startRumble');
       animationTimeout = setTimeout(function(){target.trigger('stopRumble');}, 1000);
+    },
+
+    swap_character_message: function() {
+      $('character-message').html(MESSAGES[Math.random() * MESSAGES.length]);
     }
   };
 

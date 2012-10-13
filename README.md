@@ -5,20 +5,43 @@ Interactive animation software
 ---
 
 
-###Ideas
-* kinect + android + iphone + ruby + html5
-* a gallery of photos of peoples faces
-* the user punches the screen and the gallery changes photo
-* the premium version lets you add your own photos
+## Source Code Repository
+
+[Punch Me Server](https://github.com/hkcodecamp/punch_me)
+[Android Client](https://github.com/hkcodecamp/punch_me_android)
+[Kinect Adapter Client](https://github.com/hkcodecamp/punch_me_kinect_adapter)
+[Wii Remote Adapter Client](https://github.com/hkcodecamp/punch_me_wiiremote)
+[iOS Client](https://github.com/hkcodecamp/punch_me_ios)
 
 
-###Features and System Components
+## Workflow
+* a photo being displayed on the screen.
+* the user stands in front of the screen and punch, the photo image being distorted and manipulated
+* the user can also hold different devices and punch (we have implemented Android, iPhone, WiiRemote clients)
+
+
+## System Components
+
+Punch Me Server (ruby event machine on thin) listens for TCP packet and send out PUNCH message to web page thru Web Socket (faye).
 [Project Page](http://hkcodecamp.github.com/punch_me)
 
+## Features
 
-### Setup Kinect Libraries on Mac
+#### Display Module
+* when the system receives a PUNCH message, image shakes
+* when the system receives a PUNCH message, colourful firework displayed
+* when the system receives a PUNCH message, image is broken into pieces
+* when the system receives a PUNCH message, damage is accumulated and display as HP bar
+* client devices can submit new photo thru TCP and replace the default one
 
-#### If you are using Mac 10.8
+#### Motion Detection Clients
+* Kinect (OpenNI and NITE), Android, iPhone, WiiRemote (wiigee and bluecove)
+* Detect PUSH and SWIPE gesture
+* sends out PUNCH TCP messages to server
+
+## Setup Kinect Libraries on Mac
+
+### If you are using Mac 10.8
 
 Follow the steps in the Usage and Install setcion:
 
@@ -29,7 +52,7 @@ Follow the steps in the Usage and Install setcion:
 
 If the brew install sensor-kinect fails,
 
-1. download the binary 
+1. download the binary
 
     https://github.com/avin2/SensorKinect/downloads
 
@@ -52,10 +75,10 @@ If the brew install sensor-kinect fails,
 After installing everything, run the sample in:
 
         /usr/local/Cellar/openni/unstable-1.5.4.0/sample/Bin/x64-Release
-        ./Sample-NiSimpleViewer 
+        ./Sample-NiSimpleViewer
 
 
-###Team member
+## Team member
 * **Alvin Hon**
 * **Chris Yuen**
 * **Eddie Lau** [3dd13](https://github.com/3dd13/)
