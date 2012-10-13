@@ -1,6 +1,5 @@
 require 'eventmachine'
-require 'debugger'
-require 'punch_me_server'
+require './punch_me_server'
 
 PORT = 9999
 
