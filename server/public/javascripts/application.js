@@ -55,7 +55,7 @@ MESSAGES = ["Shit", "F Off", "No, I didn't do it", "You Lie !!"];
     },
 
     swap_character_message: function() {
-      $('character-message').html(MESSAGES[Math.random() * MESSAGES.length]);
+      $('#character-message').html(MESSAGES[parseInt(Math.random() * MESSAGES.length)]);
     }
   };
 
