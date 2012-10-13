@@ -63,22 +63,20 @@
       comboBar.hit(5);
     });
 
-    $('button.heal').on('click', function()
-    {
-      victim.heal();
-    });
-
     faye.subscribe('/punch_me', function(message)
     {
+      console.log("Got message: ", message);
+
       var command = message.split(' ')[0];
       switch(command)
       {
         case 'PUNCH':
           victim.punch();
+          comboBar.hit(5);
           break;
 
         default:
-          console.log("Unknown message: " + message);
+          console.log("Unknown message: ", message);
           break;
       }
     });
