@@ -45,7 +45,8 @@
 
     faye.subscribe('/punch_me', function(message)
     {
-      switch(message)
+      var command = message.split(' ')[0];
+      switch(command)
       {
         case 'PUNCH':
           victim1.punch();

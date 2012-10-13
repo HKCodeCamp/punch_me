@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="stylesheets/application.css" rel="stylesheet" />
+
+    <script src="http://localhost:9292/faye.js"></script>
+    <script src="javascripts/jquery.js"></script>
+    <script src="javascripts/paper.js"></script>
+
+    <script type="text/paperscript" canvas="main-canvas" src="javascripts/canvas.js"></script>
+    <script src="javascripts/particles.js"></script>
+    <script src="javascripts/application.js"></script>
+
+    <title>Punch Me If You Can!</title>
+  </head>
+
+  <body>
+    <h1>Punch Me If You Can!</h1>
+    <button type="button" class="punch">Yeah</button>
+
+    <canvas id="main-canvas" width="800" height="600"></canvas>
+    <canvas id="particles-overlay" width="800" height="600"></canvas>
+
+    <div class="victim">
+      <img id="victim-face" class="face" src="images/one.jpg" />
+    </div>
+  </body>
+</html>

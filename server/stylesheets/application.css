@@ -1,0 +1,20 @@
+.trace {
+  border: 1px solid black;
+  min-height: 200px;
+}
+
+.victim {
+  text-align: center;
+}
+
+canvas {
+  position: absolute;
+}
+
+#main-canvas {
+  z-index: 1;
+}
+
+#particles-overlay {
+  z-index: 2;
+}

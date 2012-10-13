@@ -5,7 +5,7 @@
 
     $ ruby faye.rb &
     $ ruby em.rb &
-    $ open client.html
+    $ open index.html
 
 
 2. listen to UDP Multicast
@@ -14,5 +14,5 @@
     PORT = 5000
 
     $ ruby faye.rb &
-    $ ruby multicast_server.rb &
-    $ open client.html
+    $ ruby multicast.rb &
+    $ open index.html
