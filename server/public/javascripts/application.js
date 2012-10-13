@@ -52,6 +52,13 @@
     }
   };
 
+  function randomDirection()
+  {
+    var directions = ['UP', 'LEFT', 'RIGHT', 'DOWN'];
+    var direction = directions[parseInt(Math.random() * 10, 10) % 4];
+    return direction;
+  }
+
   $(function()
   {
     var victim = new Victim($('#main-canvas'));
@@ -65,11 +72,9 @@
 
     $('button.punch').on('click', function()
     {
-      var directions = ['UP', 'LEFT', 'RIGHT', 'DOWN'];
-      var direction = directions[parseInt(Math.random() * 10, 10) % 4];
       var force = Math.random() * 10;
 
-      victim.punch(direction, force);
+      victim.punch(randomDirection(), force);
       comboBar.hit(5);
     });
 
@@ -85,6 +90,13 @@
         case 'PUNCH':
           var direction = parts[1];
           var magnitude = parts[2];
+
+          if(direction != "UP" && direction != "DOWN" &&
+            direction != "LEFT" && direction != "DOWN")
+            direction = randomDirection();
+
+          if(typeof(magnitude) != 'number')
+            magnitude = Math.random() * 10;
 
           victim.punch(direction, magnitude);
           comboBar.hit(5);
