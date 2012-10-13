@@ -3,10 +3,6 @@
   min-height: 200px;
 }
 
-.victim {
-  text-align: center;
-}
-
 canvas {
   position: absolute;
 }
@@ -17,4 +13,8 @@ canvas {
 
 #particles-overlay {
   z-index: 2;
+}
+
+#victim-face {
+  display: none;
 }

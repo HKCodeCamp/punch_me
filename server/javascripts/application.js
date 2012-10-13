@@ -5,20 +5,18 @@
   function Victim($selector)
   {
     this.$selector = $selector;
-    var $face = this.$selector.find('.face');
-    $face.jrumble();
+    $selector.jrumble();
     $('#particles-overlay')
-      .css('left', $face.position().left + "px")
-      .css('top', $face.position().top + "px");
+      .css('left', $selector.position().left + "px")
+      .css('top', $selector.position().top + "px");
   }
 
   Victim.prototype =
   {
     punch: function()
     {
-      var $face = this.$selector.find('.face');
       // $face.attr('src', 'images/two.jpg');
-      this.shakeAndVibrate($face);
+      this.shakeAndVibrate(this.$selector);
       window.explodeAt(Math.random() * 400, Math.random() * 600);
       VICTIM_HIT_SOUND.play();
       // setTimeout(function() { $face.attr('src', 'images/one.jpg'); }, 200);
@@ -39,12 +37,12 @@
 
   $(function()
   {
-    var victim1 = new Victim($('.victim'));
+    var victim = new Victim($('#main-canvas'));
     var faye = new Faye.Client("http://localhost:9292/faye");
 
     $('button.punch').on('click', function()
     {
-      victim1.punch();
+      victim.punch();
     });
 
     faye.subscribe('/punch_me', function(message)
@@ -53,7 +51,7 @@
       switch(command)
       {
         case 'PUNCH':
-          victim1.punch();
+          victim.punch();
           break;
 
         default:
