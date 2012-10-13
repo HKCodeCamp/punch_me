@@ -10,10 +10,16 @@ rasterSource.visible = false;
 var gridRowCount = parseInt(rasterSource.size.height / GRID_SIZE, 10);
 var gridColCount = parseInt(rasterSource.size.width / GRID_SIZE, 10);
 
+_.each(document.getElementsByTagName('canvas'), function(canvas)
+{
+  canvas.width = rasterSource.size.width;
+  canvas.height = rasterSource.size.height;
+});
+
 var grid = _.map(_.range(gridRowCount),
   function() { return _.range(gridColCount); });
 
-var background = new Path.Rectangle([0, 0], view.size);
+var background = new Path.Rectangle([0, 0], rasterSource.size);
 background.fillColor = 'black';
 
 var gridLayer = new Layer();
@@ -58,7 +64,7 @@ window.paperExplodeAt = function(x, y)
       frag.destinationAngle = Math.random() * 360;
     });
   });
-}
+};
 
 function onFrame()
 {

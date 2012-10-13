@@ -18,8 +18,8 @@
       // $face.attr('src', 'images/two.jpg');
       this.shakeAndVibrate(this.$selector);
 
-      var x = Math.random() * 400;
-      var y = Math.random() * 400;
+      var x = Math.random() * $('canvas')[0].width;
+      var y = Math.random() * $('canvas')[0].height;
 
       window.explodeAt(x, y);
       window.paperExplodeAt(x, y);
