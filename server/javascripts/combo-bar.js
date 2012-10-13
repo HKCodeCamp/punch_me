@@ -1,7 +1,9 @@
 function ComboBar($selector)
 {
   this.$selector = $selector;
-  this.value = 0;
+
+  this.counter = 0;
+  this.score = 0;
   this.refresh();
 
   this.timeout = null;
@@ -11,7 +13,7 @@ function ComboBar($selector)
 ComboBar.prototype = {
   hitImpl: function(val)
   {
-    this.value += val;
+    this.score += val;
     this.refresh();
   },
 
@@ -21,6 +23,7 @@ ComboBar.prototype = {
       val = 1;
 
     this.hitImpl(val);
+    this.counter += 1;
 
     if(this.interval) clearInterval(this.interval);
     if(this.timeout) clearTimeout(this.timeout);
@@ -30,7 +33,8 @@ ComboBar.prototype = {
     {
       self.interval = setInterval(function()
       {
-        var x = Math.max(0, self.value - 3) - self.value;
+        var x = Math.max(0, self.score - 3) - self.score;
+        self.counter = 0;
         self.hitImpl(x);
       }, 10);
     }, 1000);
@@ -38,19 +42,26 @@ ComboBar.prototype = {
 
   refresh: function()
   {
-    this.$selector.find('.progress .bar').css('width', this.value + "%");
-    this.$selector.find('.value').text(this.value);
+    this.$selector.find('.progress .bar').css('width', this.score + "%");
+
+    if(this.counter <= 0)
+      this.$selector.find('.combo').hide();
+    else
+    {
+      this.$selector.find('.combo').show();
+      this.$selector.find('.combo .value').text(this.counter);
+    }
 
     this.$selector.find('.progress')
       .removeClass('progress-info')
       .removeClass('progress-success')
       .removeClass('progress-warning');
 
-    if(this.value < 50)
-      this.$selector.addClass('progress-info');
-    else if(this.value < 75)
-      this.$selector.addClass('progress-success');
-    else if(this.value)
-      this.$selector.addClass('progress-warning');
+    if(this.score < 50)
+      this.$selector.find('.progress').addClass('progress-info');
+    else if(this.score < 75)
+      this.$selector.find('.progress').addClass('progress-success');
+    else if(this.score)
+      this.$selector.find('.progress').addClass('progress-warning');
   }
 };
