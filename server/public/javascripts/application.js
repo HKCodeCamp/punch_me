@@ -59,7 +59,11 @@
 
     $('button.punch').on('click', function()
     {
-      victim.punch();
+      var directions = ['UP', 'LEFT', 'RIGHT', 'DOWN'];
+      var direction = directions[parseInt(Math.random() * 10, 10) % 4];
+      var force = Math.random() * 10;
+
+      victim.punch(direction, force);
       comboBar.hit(5);
     });
 
