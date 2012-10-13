@@ -31,10 +31,13 @@ ComboBar.prototype = {
     var self = this;
     self.timeout = setTimeout(function()
     {
+      self.counter = 0;
+      if(self.onRestore)
+        self.onRestore();
+
       self.interval = setInterval(function()
       {
         var x = Math.max(0, self.score - 3) - self.score;
-        self.counter = 0;
         self.hitImpl(x);
       }, 10);
     }, 1000);

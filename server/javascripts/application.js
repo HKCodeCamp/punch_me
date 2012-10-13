@@ -52,6 +52,10 @@
     var faye = new Faye.Client("http://localhost:9292/faye");
 
     var comboBar = new ComboBar($('.score'));
+    comboBar.onRestore = function()
+    {
+      victim.heal();
+    };
 
     $('button.punch').on('click', function()
     {
