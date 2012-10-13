@@ -75,6 +75,10 @@
           comboBar.hit(5);
           break;
 
+        case 'IMAGE':
+          window.location = '/?image=' + message.split(' ')[1];
+          break;
+
         default:
           console.log("Unknown message: ", message);
           break;

@@ -56,8 +56,10 @@
       </div>
     </div>
 
-
-
-    <img id="victim-face" src="images/one.jpg" />
+    <% if params[:image].present? %>
+      <img id="victim-face" src="images/uploads/<%= params[:image] %>" />
+    <% else %>
+      <img id="victim-face" src="images/one.jpg" />
+    <% end %>
   </body>
 </html>

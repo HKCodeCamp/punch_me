@@ -33,8 +33,9 @@ module PunchMeServer
       fn = SecureRandom.uuid
       File.write(IMAGE_DIR.join(fn), @image_buffer)
       publish("IMAGE #{fn}")
-
       puts "Saved file #{fn}"
+
+      publish("IMAGE #{fn}")
     end
   end
 

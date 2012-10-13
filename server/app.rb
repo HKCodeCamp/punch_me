@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'eventmachine'
 require 'thin'
+require 'active_support/core_ext'
 
 require './punch_me_server.rb'
 
