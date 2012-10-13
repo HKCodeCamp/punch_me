@@ -18,8 +18,14 @@
       // $face.attr('src', 'images/two.jpg');
       this.shakeAndVibrate(this.$selector);
 
-      var x = Math.random() * $('canvas')[0].width;
-      var y = Math.random() * $('canvas')[0].height;
+      var x = Math.random() * $('canvas')[0].width * 0.85;
+      var y = Math.random() * $('canvas')[0].height * 0.85;
+
+      if(x < $('canvas')[0].width * 0.15)
+        x = $('canvas')[0].width * 0.15;
+
+      if(y < $('canvas')[0].height * 0.15)
+        y = $('canvas')[0].height * 0.15;
 
       window.particlesExplodeAt(x, y, direction, force);
       window.paperExplodeAt(x, y, direction, force);
