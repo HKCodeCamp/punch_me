@@ -17,7 +17,13 @@
     {
       // $face.attr('src', 'images/two.jpg');
       this.shakeAndVibrate(this.$selector);
-      window.explodeAt(Math.random() * 400, Math.random() * 600);
+
+      var x = Math.random() * 400;
+      var y = Math.random() * 400;
+
+      window.explodeAt(x, y);
+      window.paperExplodeAt(x, y);
+
       VICTIM_HIT_SOUND.play();
       // setTimeout(function() { $face.attr('src', 'images/one.jpg'); }, 200);
     },
