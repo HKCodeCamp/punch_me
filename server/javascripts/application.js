@@ -51,9 +51,12 @@
     var victim = new Victim($('#main-canvas'));
     var faye = new Faye.Client("http://localhost:9292/faye");
 
+    var comboBar = new ComboBar($('.score'));
+
     $('button.punch').on('click', function()
     {
       victim.punch();
+      comboBar.hit(5);
     });
 
     $('button.heal').on('click', function()

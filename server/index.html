@@ -17,6 +17,7 @@
     <script type="text/paperscript" canvas="main-canvas" src="javascripts/canvas.js"></script>
     <script src="javascripts/particles.js"></script>
 
+    <script src="javascripts/combo-bar.js"></script>
     <script src="javascripts/application.js"></script>
 
     <title>Punch Me If You Can!</title>
@@ -39,8 +40,11 @@
 
           <div style="width: 70%; margin: 0 auto; text-align: center">
             <h3>Style Points</h3>
-            <div class="combo-bar progress progress-striped active" style="height: 40px">
-              <div class="bar bar-active" style="width: 50%"></div>
+            <div class="score">
+              <div class="value"></div>
+              <div class="progress progress-striped active" style="height: 40px">
+                <div class="bar bar-active" style="width: 50%"></div>
+              </div>
             </div>
             <button type="button" class="btn btn-danger punch">Hit</button>
             <button type="button" class="btn heal">Heal</button>
