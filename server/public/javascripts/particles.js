@@ -21,20 +21,20 @@ $(function()
       case 'UP':
         this.speed = {
           x: -10 + Math.random() * 20 * force / 10,
-          y: -20 + Math.random() * 10 * force / 10
+          y: -20 + Math.random() * 20 * force / 10
         };
         break;
 
       case 'LEFT':
         this.speed = {
-          x: -20.5 + Math.random() * 10 * force / 10,
+          x: -20.5 + Math.random() * 20 * force / 10,
           y: -10 + Math.random() * 20 * force / 10
         };
         break;
 
       case 'RIGHT':
         this.speed = {
-          x: 20.5 + Math.random() * 10 * force / 10,
+          x: 20.5 + Math.random() * 20 * force / 10,
           y: -10 + Math.random() * 20 * force / 10
         };
         break;
@@ -42,7 +42,7 @@ $(function()
       case 'DOWN':
         this.speed = {
           x: -10 + Math.random() * 20 * force / 10,
-          y: 20 + Math.random() * 10 * force / 10
+          y: 20 + Math.random() * 20 * force / 10
         };
         break;
 
