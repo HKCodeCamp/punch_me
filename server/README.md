@@ -18,8 +18,8 @@ Chrome refuses to do "cross-origin" for Paper.js for local files so only Firefox
 		PORT = 9999
 
     	$ ruby faye.rb &
-    	$ ruby em.rb &
-    	$ open index.html
+      $ ruby app.rb
+      $ open 'http://localhost:8000'
 
 
 2. listen to UDP Multicast

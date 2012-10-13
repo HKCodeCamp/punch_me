@@ -20,8 +20,14 @@ MESSAGES = ["Shit", "F Off", "No, I didn't do it", "You Lie !!"];
       // $face.attr('src', 'images/two.jpg');
       this.shakeAndVibrate(this.$selector);
 
-      var x = Math.random() * $('canvas')[0].width;
-      var y = Math.random() * $('canvas')[0].height;
+      var x = Math.random() * $('canvas')[0].width * 0.85;
+      var y = Math.random() * $('canvas')[0].height * 0.85;
+
+      if(x < $('canvas')[0].width * 0.15)
+        x = $('canvas')[0].width * 0.15;
+
+      if(y < $('canvas')[0].height * 0.15)
+        y = $('canvas')[0].height * 0.15;
 
       window.particlesExplodeAt(x, y, direction, force);
       window.paperExplodeAt(x, y, direction, force);
@@ -53,6 +59,13 @@ MESSAGES = ["Shit", "F Off", "No, I didn't do it", "You Lie !!"];
     }
   };
 
+  function randomDirection()
+  {
+    var directions = ['UP', 'LEFT', 'RIGHT', 'DOWN'];
+    var direction = directions[parseInt(Math.random() * 10, 10) % 4];
+    return direction;
+  }
+
   $(function()
   {
     var victim = new Victim($('#main-canvas'));
@@ -66,7 +79,9 @@ MESSAGES = ["Shit", "F Off", "No, I didn't do it", "You Lie !!"];
 
     $('button.punch').on('click', function()
     {
-      victim.punch();
+      var force = Math.random() * 10;
+
+      victim.punch(randomDirection(), force);
       comboBar.hit(5);
     });
 
@@ -82,6 +97,13 @@ MESSAGES = ["Shit", "F Off", "No, I didn't do it", "You Lie !!"];
         case 'PUNCH':
           var direction = parts[1];
           var magnitude = parts[2];
+
+          if(direction != "UP" && direction != "DOWN" &&
+            direction != "LEFT" && direction != "DOWN")
+            direction = randomDirection();
+
+          if(typeof(magnitude) != 'number')
+            magnitude = Math.random() * 10;
 
           victim.punch(direction, magnitude);
           comboBar.hit(5);
