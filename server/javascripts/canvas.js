@@ -22,26 +22,37 @@ var grid = _.map(_.range(gridRowCount),
 var background = new Path.Rectangle([0, 0], rasterSource.size);
 background.fillColor = 'black';
 
-var gridLayer = new Layer();
-
 _.each(grid, function(row, y)
 {
   _.each(row, function(col, x)
   {
-    grid[y][x] = new Raster(
+    var frag = new Raster(
       rasterSource.getSubImage(
         x * GRID_SIZE, y * GRID_SIZE,
         GRID_SIZE, GRID_SIZE));
 
-    grid[y][x].position = new Point(x * GRID_SIZE, y * GRID_SIZE);
+    frag.position = new Point(x, y) * GRID_SIZE;
 
-    grid[y][x].destination = null;
-    grid[y][x].currentAngle = 0;
-    grid[y][x].destinationAngle = null;
+    frag.destination = null;
+    frag.currentAngle = 0;
+    frag.destinationAngle = null;
+
+    grid[y][x] = frag;
   });
 });
 
-project.activeLayer.strokeColor = 'white';
+window.paperReset = function()
+{
+  _.each(grid, function(row, y)
+  {
+    _.each(row, function(col, x)
+    {
+      var frag = grid[y][x];
+      frag.destination = new Point(x, y) * GRID_SIZE;
+      frag.destinationAngle = 0;
+    });
+  });
+};
 
 window.paperExplodeAt = function(x, y)
 {
@@ -82,21 +93,28 @@ function onFrame()
         if(vec.length > 3)
           frag.translate(vec);
         else
+        {
+          frag.position = frag.destination;
           frag.destination = null;
+        }
       }
 
-      if(frag.destinationAngle)
+      if(frag.destinationAngle !== null)
       {
         var deltaAngle = frag.destinationAngle - frag.currentAngle;
         deltaAngle /= DAMPING;
 
-        if(deltaAngle > 3)
+        if(Math.abs(deltaAngle) > 3)
         {
           frag.rotate(deltaAngle);
           frag.currentAngle += deltaAngle;
         }
         else
+        {
+          frag.rotate(frag.destinationAngle - frag.currentAngle);
+          frag.currentAngle = frag.destinationAngle;
           frag.destinationAngle = null;
+        }
       }
     });
   });

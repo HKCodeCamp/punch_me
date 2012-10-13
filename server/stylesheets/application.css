@@ -3,8 +3,14 @@
   min-height: 200px;
 }
 
+#canvas-container {
+  position: relative;
+}
+
 canvas {
   position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #main-canvas {

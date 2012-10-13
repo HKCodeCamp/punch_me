@@ -2,27 +2,55 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <link href="stylesheets/bootstrap-combined.min.css" rel="stylesheet" />
     <link href="stylesheets/application.css" rel="stylesheet" />
 
     <script src="http://localhost:9292/faye.js"></script>
+
     <script src="javascripts/underscore-min.js"></script>
     <script src="javascripts/jquery.js"></script>
     <script src="javascripts/jquery.jrumble.1.3.min.js"></script>
-    <script src="javascripts/paper.js"></script>
 
+    <script src="javascripts/bootstrap.min.js"></script>
+
+    <script src="javascripts/paper.js"></script>
     <script type="text/paperscript" canvas="main-canvas" src="javascripts/canvas.js"></script>
     <script src="javascripts/particles.js"></script>
+
     <script src="javascripts/application.js"></script>
 
     <title>Punch Me If You Can!</title>
   </head>
 
   <body>
-    <h1>Punch Me If You Can!</h1>
-    <button type="button" class="punch">Yeah</button>
+    <div class="container">
+      <div class="row">
+        <div class="span7">
+          <div id="canvas-container">
+            <canvas id="main-canvas"></canvas>
+            <canvas id="particles-overlay"></canvas>
+          </div>
+        </div>
 
-    <canvas id="main-canvas"></canvas>
-    <canvas id="particles-overlay"></canvas>
+        <div class="span5">
+          <div style="text-align: center">
+            <h1>Punch Me If You Can!</h1>
+          </div>
+
+          <div style="width: 70%; margin: 0 auto; text-align: center">
+            <h3>Style Points</h3>
+            <div class="combo-bar progress progress-striped active" style="height: 40px">
+              <div class="bar bar-active" style="width: 50%"></div>
+            </div>
+            <button type="button" class="btn btn-danger punch">Hit</button>
+            <button type="button" class="btn heal">Heal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     <img id="victim-face" src="images/one.jpg" />
   </body>
 </html>

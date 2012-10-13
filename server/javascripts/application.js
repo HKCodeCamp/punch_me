@@ -28,6 +28,11 @@
       // setTimeout(function() { $face.attr('src', 'images/one.jpg'); }, 200);
     },
 
+    heal: function()
+    {
+      window.paperReset();
+    },
+
     // restore: function()
     // {
     //   this.$selector.find('.face').attr('src', 'one.jpg');
@@ -49,6 +54,11 @@
     $('button.punch').on('click', function()
     {
       victim.punch();
+    });
+
+    $('button.heal').on('click', function()
+    {
+      victim.heal();
     });
 
     faye.subscribe('/punch_me', function(message)
