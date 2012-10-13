@@ -1,3 +1,9 @@
+# Prerequisites
+
+    gem install faye eventmachine
+
+# Go Punching!
+
 1. listen to TCP
 
     IP_ADDR = "192.168.X.X"
