@@ -7,6 +7,9 @@
     this.$selector = $selector;
     var $face = this.$selector.find('.face');
     $face.jrumble();
+    $('#particles-overlay')
+      .css('left', $face.position().left + "px")
+      .css('top', $face.position().top + "px");
   }
 
   Victim.prototype =
@@ -16,20 +19,21 @@
       var $face = this.$selector.find('.face');
       // $face.attr('src', 'images/two.jpg');
       this.shakeAndVibrate($face);
+      window.explodeAt(Math.random() * 400, Math.random() * 600);
       VICTIM_HIT_SOUND.play();
       // setTimeout(function() { $face.attr('src', 'images/one.jpg'); }, 200);
     },
 
-    restore: function()
-    {
-      this.$selector.find('.face').attr('src', 'one.jpg');
-    },
+    // restore: function()
+    // {
+    //   this.$selector.find('.face').attr('src', 'one.jpg');
+    // },
 
     shakeAndVibrate: function(target) {
       var animationTimeout;
       clearTimeout(animationTimeout);
       target.trigger('startRumble');
-      animationTimeout = setTimeout(function(){target.trigger('stopRumble');}, 1000)
+      animationTimeout = setTimeout(function(){target.trigger('stopRumble');}, 1000);
     }
   };
 

@@ -82,5 +82,5 @@ $(function()
 	}
 	
 	setInterval(draw, 33);
-  window.explodeAt(200, 300);
+  // window.explodeAt(200, 300);
 });
