@@ -1,6 +1,10 @@
 # Prerequisites
 
     gem install faye eventmachine
+    
+or
+
+	bundle install
 
 # Supported Browsers
 
