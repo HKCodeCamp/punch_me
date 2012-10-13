@@ -2,6 +2,10 @@
 
     gem install faye eventmachine
 
+# Supported Browsers
+
+Chrome refuses to do "cross-origin" for Paper.js for local files so only Firefox is supported at the moment.
+
 # Go Punching!
 
 1. listen to TCP
