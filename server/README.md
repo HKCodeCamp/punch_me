@@ -14,5 +14,5 @@
     PORT = 5000
 
     $ ruby faye.rb &
-    $ ruby multicast.rb &
+    $ ruby multicast_server.rb &
     $ open client.html
