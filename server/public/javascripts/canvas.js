@@ -54,9 +54,9 @@ window.paperReset = function()
   });
 };
 
-window.paperExplodeAt = function(x, y)
+window.paperExplodeAt = function(x, y, force, direction)
 {
-  var force = FORCE;
+  force = force * 10;
   var radius = SPLASH;
   var site = new Point(x, y);
 

@@ -18,7 +18,6 @@ module PunchMeServer
     if @image_buffer
       @image_buffer << data
     elsif data.start_with?("PUNCH")
-      publish(line0.strip)
       data.lines.each do |line|
         publish(line.strip)
       end

@@ -7,28 +7,58 @@ $(function()
 	
 	var PARTICLE_COUNT = 75;
 
-  window.explodeAt = function(x, y)
+  window.particlesExplodeAt = function(x, y, direction, force)
   {
     particles = new Array(PARTICLE_COUNT);
     for(var i = 0; i < PARTICLE_COUNT; i++)
-      particles[i] = new Particle(x, y);
+      particles[i] = new Particle(x, y, direction, force);
   };
 	
-	function Particle(x, y)
+	function Particle(x, y, direction, force)
 	{
-		this.speed = {
-      x: -20.5 + Math.random() * 51,
-      y: -20 + Math.random() * 40
-    };
+    switch(direction)
+    {
+      case 'UP':
+        this.speed = {
+          x: -10 + Math.random() * 20 * force / 10,
+          y: -20 + Math.random() * 10 * force / 10
+        };
+        break;
+
+      case 'LEFT':
+        this.speed = {
+          x: -20.5 + Math.random() * 10 * force / 10,
+          y: -10 + Math.random() * 20 * force / 10
+        };
+        break;
+
+      case 'RIGHT':
+        this.speed = {
+          x: 20.5 + Math.random() * 10 * force / 10,
+          y: -10 + Math.random() * 20 * force / 10
+        };
+        break;
+
+      case 'DOWN':
+        this.speed = {
+          x: -10 + Math.random() * 20 * force / 10,
+          y: 20 + Math.random() * 10 * force / 10
+        };
+        break;
+
+      default:
+        break;
+    }
+
     this.location = {x: x, y: y};
 
-		this.radius = 10+Math.random()*20;
-		this.life = 20+Math.random()*10;
-		this.remaining_life = this.life;
+    this.radius        = 10 + Math.random() * 20;
+    this.life          = 20 + Math.random() * 10;
+    this.remainingLife = this.life;
 
-		this.r = Math.round(Math.random()*255);
-		this.g = Math.round(Math.random()*128);
-		this.b = Math.round(Math.random()*128);
+		this.r = Math.round(Math.random() * 255);
+		this.g = Math.round(Math.random() * 128);
+		this.b = Math.round(Math.random() * 128);
 	}
 	
 	function draw()
@@ -56,7 +86,7 @@ $(function()
 			ctx.beginPath();
 			//changing opacity according to the life.
 			//opacity goes to 0 at the end of life of a particle
-			p.opacity = Math.round(p.remaining_life/p.life*100)/100;
+			p.opacity = Math.round(p.remainingLife/p.life*100)/100;
 			//a gradient instead of white fill
 			var gradient = ctx.createRadialGradient(p.location.x, p.location.y, 0, p.location.x, p.location.y, p.radius);
 			gradient.addColorStop(0, "rgba("+p.r+", "+p.g+", "+p.b+", "+p.opacity+")");
@@ -67,13 +97,13 @@ $(function()
 			ctx.fill();
 			
 			//lets move the particles
-			p.remaining_life--;
+			p.remainingLife--;
 			p.radius--;
 			p.location.x += p.speed.x;
 			p.location.y += p.speed.y;
 			
 			//regenerate particles
-			if(p.remaining_life < 0 || p.radius < 0)
+			if(p.remainingLife < 0 || p.radius < 0)
 				particles[i] = null;
 		}
 

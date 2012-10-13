@@ -13,7 +13,7 @@
 
   Victim.prototype =
   {
-    punch: function()
+    punch: function(direction, force)
     {
       // $face.attr('src', 'images/two.jpg');
       this.shakeAndVibrate(this.$selector);
@@ -21,8 +21,8 @@
       var x = Math.random() * $('canvas')[0].width;
       var y = Math.random() * $('canvas')[0].height;
 
-      window.explodeAt(x, y);
-      window.paperExplodeAt(x, y);
+      window.particlesExplodeAt(x, y, direction, force);
+      window.paperExplodeAt(x, y, direction, force);
 
       VICTIM_HIT_SOUND.play();
       // setTimeout(function() { $face.attr('src', 'images/one.jpg'); }, 200);
@@ -67,16 +67,21 @@
     {
       console.log("Got message: ", message);
 
-      var command = message.split(' ')[0];
+      var parts = message.split(' ');
+      var command = parts[0];
+
       switch(command)
       {
         case 'PUNCH':
-          victim.punch();
+          var direction = parts[1];
+          var magnitude = parts[2];
+
+          victim.punch(direction, magnitude);
           comboBar.hit(5);
           break;
 
         case 'IMAGE':
-          window.location = '/?image=' + message.split(' ')[1];
+          window.location = '/?image=' + parts[1];
           break;
 
         default:
