@@ -8,9 +8,13 @@ Interactive animation software
 ## Source Code Repository
 
 [Punch Me Server](https://github.com/hkcodecamp/punch_me)
+
 [Android Client](https://github.com/hkcodecamp/punch_me_android)
+
 [Kinect Adapter Client](https://github.com/hkcodecamp/punch_me_kinect_adapter)
+
 [Wii Remote Adapter Client](https://github.com/hkcodecamp/punch_me_wiiremote)
+
 [iOS Client](https://github.com/hkcodecamp/punch_me_ios)
 
 
@@ -68,19 +72,19 @@ If the brew install sensor-kinect fails,
 
     link the command line niReg so that the manual install can run:
 
-            sudo ln -s /usr/local/bin/niReg /usr/bin/niReg
+        sudo ln -s /usr/local/bin/niReg /usr/bin/niReg
 
     The main reason for doing this is because the niReg is setup when you brew install openni, so the path that the install.sh (of sensor-kinect) expecting does not match.
 
-After installing everything, run the sample in:
+4. After installing everything, run the sample in:
 
         /usr/local/Cellar/openni/unstable-1.5.4.0/sample/Bin/x64-Release
         ./Sample-NiSimpleViewer
 
 
 ## Team member
-* **Alvin Hon**
-* **Chris Yuen**
+* **Alvin Hon** [AlvinHon](https://github.com/AlvinHon/)
+* **Chris Yuen** [kizzx2](https://github.com/kizzx2/)
 * **Eddie Lau** [3dd13](https://github.com/3dd13/)
 * **Lincoln Lee** [linc01n](https://github.com/linc01n/)
 
